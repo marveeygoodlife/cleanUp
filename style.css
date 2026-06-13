@@ -1,0 +1,320 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --white:#FFFFFF;
+    --primaryColor: #1E3A8A;
+    --secondaryColor:#93C5FD;
+    --backgroundColor: #F8FAFC;
+    --textColor: #111827;
+    --paddingSmall : 10px;
+    --paddingMedium : 12px;
+    --paddingLarge : 15px;
+    --paddingXtraLarge : 35px;
+    --shadowUl: -5px 0 15px rgba(0, 0, 0, 0.1);
+    --heroShadow:  rgba(55, 55, 55, 0.9);
+    --cardShadow:0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.08);
+    --cardShadowHover: rgba(30, 58, 138, 0.015);
+
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    color: var(--textColor);
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--backgroundColor);
+}
+header {
+    width: 100%;
+     border-bottom: 1px solid var(--secondaryColor);
+background: rgba(255, 255, 255, 0.95);       
+--webkit-backdrop-filter: blur(5px);
+        position: sticky;
+     top: 0;    
+    left: 0;
+    z-index: 1000;
+ }
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: var(--paddingSmall);
+    padding-block: var(--paddingMedium);
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1rem;
+     text-decoration: none;
+     color: var(--primaryColor);
+     transition: color .2s ease;
+     margin-left: 3rem;
+}
+.logo:hover {
+    color: var(--secondaryColor);
+}
+
+#ulLinks {
+position: fixed;
+top: 3rem;
+right: 0;
+display: flex;
+flex-direction: column;
+align-items: left;
+justify-content: flex-start;
+height: 100vh;
+ width: 100%;
+padding: var(--paddingLarge);
+transition: transform .2s ease-in-out, box-shadow .2s ease;
+transform: translateX(100%);
+box-shadow: var(--shadowUl);
+gap: 1.5rem;
+background: var(--backgroundColor);
+
+}
+
+
+#ulLinks li {
+    list-style: none;
+    padding: var(--paddingMedium);
+    text-align: left;
+}
+#ulLinks li  a {
+text-decoration: none;
+font-style: italic;
+text-transform: capitalize;
+font-weight: 600;
+Font-size: 1rem;
+color: var(--primaryColor);
+transition: color .2s ease;
+ }
+
+#ulLinks li  a:visited {
+color: var(--primaryColor);
+}
+
+#ulLinks li  a:hover {
+color: var(--secondaryColor);
+text-decoration: underline;
+}
+
+#toggleBtn {
+    width: 35px;
+    height: 25px;
+    display: flex;
+    flex-direction: column;
+     justify-content: space-between;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background: transparent;
+ }
+span.bar {
+    width:100%;
+    height: 3px;
+     background-color: var(--primaryColor);
+      border-radius: 10px;
+     transition: all .3s ease;
+}
+ #ulLinks.active {
+transform: translateX(0);
+}
+#toggleBtn.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+
+#toggleBtn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+#toggleBtn.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
+#toggleBtn:hover .bar {
+    opacity:0.8s;
+}
+/* section */
+section {
+    padding: 4rem 5%;
+    border: 2px solid red;
+}
+section h2 {
+    margin-bottom: 3rem;
+    text-transform: capitalize;
+    text-align: center;
+}
+section h3 {
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+section p {
+    margin-bottom: 1rem;
+}
+.container {
+    width: min(90%, 1200px);
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    display: block;
+}
+/* Hero section */
+#hero {
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    background-repeat: no-repeat;
+    background: url(/images/ryanmcguire-laundry-saloon-567951_1920.jpg) center / cover;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(30, 58, 138, 0.75), rgba(17, 24, 39, 0.6));
+     padding: 0;
+ } 
+.heroContent {
+    z-index: 1;
+    position: relative;
+    max-width: 650px;
+     color: var(--backgroundColor);
+     text-align: left;
+     padding-left: 20px;
+  }
+  .heroContent h1 {
+    font-size: clamp(2.3rem, 5vw, 4.5rem);
+    line-height: 1.1;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .heroContent p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 550px;
+    margin-bottom: 2rem;
+    color: rgba(248, 250, 252, 0.9)
+  }
+  .btn {
+    display: inline-block;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    transition: all .3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight:700;
+    padding: 1rem 2rem;
+    color: var(--textColor);
+    background: var(--secondaryColor);
+    margin-bottom: 1rem;
+    width: fit-content;
+  }
+  .btn:hover {
+transform: translateY(3px);
+border: 1px solid var(--primaryColor);
+box-shadow: 0 8px 20px var(--heroShadow);
+   }
+
+/* about session */
+
+.aboutGrid {
+    display: grid;
+    grid-template-columns:1fr;
+    gap: 1rem;
+}
+
+.aboutImg img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 16px;
+}
+
+#about h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #1E3A8A;
+        box-shadow:  var(--cardShadow);
+        border-radius: 10px;
+
+ }
+ 
+.aboutContent p {
+    margin-bottom: 1.1rem;
+    font-size: 1.05rem;
+    line-height:1.8;
+    color: #4B5563;
+}
+.aboutContent::before {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 20px;
+    background: #93C5FD;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+}
+/* media queries */
+/* @media screen and (max-width: 1023px){
+    #hero {
+        background: url(/images/drowdry-dry-cleaning-7951977_640_small.jpg) center / cover;
+    }
+} */
+@media  screen and (min-width: 1024px) {
+    #ulLinks {
+position: unset;
+top: unset;
+right: unset;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+height: auto  !important;
+transform: unset;
+ z-index: unset;
+gap: unset;
+ background-color: unset;
+ box-shadow: unset;
+
+}
+ nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: unset;
+    padding-block: unset;
+}
+
+ 
+#toggleBtn {
+    display: none;
+}
+.heroContent {
+    max-width: 750px;
+}
+/* about */
+.aboutContent {
+    max-width: 450px;
+}
+.aboutGrid {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+ }
+}
