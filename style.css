@@ -6,7 +6,7 @@
 :root {
     --white:#FFFFFF;
     --primaryColor: #1E3A8A;
-    --secondaryColor:#93C5FD;
+    --secondaryColor:#00d4ff;
     --backgroundColor: #F8FAFC;
     --textColor: #111827;
     --paddingSmall : 10px;
@@ -54,7 +54,7 @@ body {
             max-width: 1400px;
             height: 100%;
             margin: 0 auto;
-            padding:  2rem;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-evenly;
             align-items: center;
@@ -80,14 +80,13 @@ body {
 
         .navLink {
             color: var(--textColor);
-            font-weight: 500;
-            font-size: 0.95rem;
+             font-size: 1.1rem;
             transition: color .2s ease;
             position: relative;
             text-decoration: none;
         }
         
-        .nav-link::after {
+        .navLink::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -138,38 +137,41 @@ body {
         }
 
      /* mobile menu toggle */
-     .mobileMenuToggle {
-        width: 45px;
-        height: 45px;
-        border: none;
-         transition: all var(--transition);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
-        background: transparent;
-        margin: 0 auto;
-        padding: 10px;
-     }
-     .bar {
-        width: 100%;
-        height: 3px;
-        background-color: var(--textColor);
-        border-radius: 10px;
-     }
+.mobileMenuToggle {
+    width: 45px;
+    height: 45px;
+    cursor: pointer;
+    background: transparent;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    transition: all var(--transition);
+    margin: 0 auto;
+}
+.mobileMenuToggle:hover {
+    box-shadow: var(--shadowUl);
+}
+.bar {
+    background-color : var(--textColor);
+    width: 100%;
+    height: 3px;
+    border-radius: 10px;
+}
+/* transform bars to X */
 
-     .mobileMenuToggle.active .bar:nth-child(1) {
-        transform: translateY(11px) rotate(45deg);
-     }
+.mobileMenuToggle.active .bar:nth-child(1) {
+    transform: translateY(11px) rotate(45deg);
+}
+.mobileMenuToggle.active .bar:nth-child(2) {
+    display:none;
+}
+.mobileMenuToggle.active .bar:nth-child(3) {
+    transform: translateY(-11px) rotate(-45deg);
+}
 
-     .mobileMenuToggle.active .bar:nth-child(2) {
-        display: none;
-          }
-
-     .mobileMenuToggle.active .bar:nth-child(3) {
-        transform: translateY(-11px) rotate(-45deg);
-     }
 .mobileMenuToggle:hover .bar {
     opacity:0.8s;
 }
@@ -187,11 +189,12 @@ body {
         }
 
         h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
+            font-size: clamp(1.5rem, 5vw, 3rem);
+            text-align: center;
         }
 
         h3 {
-            font-size: clamp(1.10rem, 3vw, 1.35rem);
+            font-size: clamp(1.1rem, 3vw, 1.35rem);
         }
 
         p {
@@ -232,6 +235,17 @@ section h3 {
 }
 section p {
     margin-bottom: 1rem;
+}
+section .sectionHeader {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.sectionHeader h2 {
+    margin-bottom: 1rem;
+}
+.sectionHeader p {
+    max-width: 550px;
+    margin: 0 auto;
 }
 .container, section {
     width: min(90%, 1400px);
@@ -318,7 +332,7 @@ box-shadow: 0 8px 20px var(--heroShadow);
 
 .aboutImg img {
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     border-radius: 16px;
 }
 
@@ -376,29 +390,11 @@ backdrop-filter: blur(10px);
     min-height: 100vh;
     position: relative;
 }
-#services::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(rgba(30, 58, 138, 0.65), rgba(17, 24, 39, 0.6));
-     padding: 0;
-     z-index: 0;
-  } 
- #services #h2 {
-    z-index: 1000;
-  }
+
   #services .container {
 color: white;
   }
-
-
-
-
-
-
-
-
-
+ 
 /* media queries */
 
    @media (max-width: 768px) {
@@ -423,7 +419,11 @@ color: white;
                 padding: 0 1.5rem;
             }
         }
-
+@media (min-width:769px) {
+    .mobileMenuToggle {
+        display: none;
+    }
+}
 @media  screen and (min-width: 1024px) {
 
 
