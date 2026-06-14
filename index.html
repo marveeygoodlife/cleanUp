@@ -8,23 +8,29 @@
 </head>
 <body>
     <header>
-        <nav> 
-            <a href="#" class="logo">CleanUp</a>
-            <div class="center">
-                <ul id="ulLinks" class="showUl">
-                    <li class="link"><a href="#hero">home</a></li>
-                    <li class="link"><a href="#about">about</a></li>
-                    <li class="link"><a href="#services">services</a></li>
-                    <li class="link"><a href="#services">blog</a></li>
-                    <li class="link"><a href="#contact">contact</a></li>
-                 </ul>
+        <nav class="navBar">
+        <div class="navbarContent">
+            <div class="logo">cleanUp</div>
+            <ul class="navLinks">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#services" class="navLink">services</a></li>
+                <li><a href="#experience" class="navLink">Experience</a></li>
+                <li><a href="#contact" class="navLink">Contact</a></li>
+            </ul>
+            <div class="navControls">
+                <!-- <button class="theme-toggle" aria-label="Toggle theme">
+                    <div class="theme-toggle-circle"></div>
+                </button> -->
+                <button class="mobileMenuToggle" aria-label="Toggle menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <button class="ctaButton">Let's Talk</button>
             </div>
-            <button type="button" aria-label="toggle-button" id="toggleBtn">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-        </nav>
+        </div>
+    </nav>
     </header>
 
     <!-- Main section contents -->
@@ -32,7 +38,7 @@
         <!-- hero section -->
          <section id="hero">
             <div class="heroContent"> 
-                <h1>Professional Laundry   & Dry Cleaning Service</h1>
+                <h1>Professional Laundry   & Dry <span class="color"> Cleaning Service</span></h1>
                 <p>Fast, affordable, and reliable laundry services with pick up and delivery.</p>
                 <a type="button" class="btn" href="https://wa.me/2347053902558">book a pickup</a>
             </div>
@@ -63,7 +69,7 @@
           </section>
           <!-- services section -->
            <section id="services">
-            <h2>our services</h2>
+            <h2 id="h2">our services</h2>
             <div class="container">
             <div class="grid"><!--card 1 -->
                 <div class="gridCard">

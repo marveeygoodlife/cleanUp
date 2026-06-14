@@ -27,122 +27,199 @@ body {
     line-height: 1.6;
     font-family: Arial, Helvetica, sans-serif;
     background: var(--backgroundColor);
+    overflow-x: hidden;
 }
-header {
-    width: 100%;
-     border-bottom: 1px solid var(--secondaryColor);
-background: rgba(255, 255, 255, 0.95);       
---webkit-backdrop-filter: blur(5px);
-        position: sticky;
-     top: 0;    
-    left: 0;
-    z-index: 1000;
- }
+ 
+      /* navigation */
+        .navBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            background: rgba(var(--backgroundColor), 0.7);
+            border-bottom: 1px solid rgba(var(--secondaryColor), 0.1);
+            z-index: 1000;
+            transition: all var(--transition);
+        }
 
-nav {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: var(--paddingSmall);
-    padding-block: var(--paddingMedium);
-}
+        .navBar.scrolled {
+            box-shadow: var(--shadow-lg);
+            background: rgba(var(--bg), 0.95);
+        }
 
-.logo {
-    font-weight: 600;
-    font-size: 1rem;
-     text-decoration: none;
-     color: var(--primaryColor);
-     transition: color .2s ease;
-     margin-left: 3rem;
-}
-.logo:hover {
-    color: var(--secondaryColor);
-}
+        .navbarContent {
+            max-width: 1400px;
+            height: 100%;
+            margin: 0 auto;
+            padding:  2rem;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
 
-#ulLinks {
-position: fixed;
-top: 3rem;
-right: 0;
-display: flex;
-flex-direction: column;
-align-items: left;
-justify-content: flex-start;
-height: 100vh;
- width: 100%;
-padding: var(--paddingLarge);
-transition: transform .2s ease-in-out, box-shadow .2s ease;
-transform: translateX(100%);
-box-shadow: var(--shadowUl);
-gap: 1.5rem;
-background: var(--backgroundColor);
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--textColor);
+            letter-spacing: -0.03em;
+            transition: transform .3s ease-in-out;
+        }
 
-}
+        .logo:hover {
+            transform: scale(1.05);
+        }
 
+        .navLinks {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
 
-#ulLinks li {
-    list-style: none;
-    padding: var(--paddingMedium);
-    text-align: left;
-}
-#ulLinks li  a {
-text-decoration: none;
-font-style: italic;
-text-transform: capitalize;
-font-weight: 600;
-Font-size: 1rem;
-color: var(--primaryColor);
-transition: color .2s ease;
- }
+        .navLink {
+            color: var(--textColor);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color .2s ease;
+            position: relative;
+            text-decoration: none;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondaryColor);
+            transition: all var(--transition);
+        }
 
-#ulLinks li  a:visited {
-color: var(--primaryColor);
-}
+        .navLink:hover {
+            color: var(--secondaryColor);
+            text-decoration: none;
+        }
 
-#ulLinks li  a:hover {
-color: var(--secondaryColor);
-text-decoration: underline;
-}
+        .navLink:hover::after {
+            width: 100%;
+        }
+      
+        .navControls {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
 
-#toggleBtn {
-    width: 35px;
-    height: 25px;
-    display: flex;
-    flex-direction: column;
-     justify-content: space-between;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    background: transparent;
- }
-span.bar {
-    width:100%;
-    height: 3px;
-     background-color: var(--primaryColor);
-      border-radius: 10px;
-     transition: all .3s ease;
-}
- #ulLinks.active {
-transform: translateX(0);
-}
-#toggleBtn.active .bar:nth-child(1) {
-    transform: translateY(11px) rotate(45deg);
-}
+        .span {
+            width: 25px;
+            height: 3px;
+            background: var(--textColor);
+            border-radius: 2px;
+            transition: all var(--transition);
+        }
+        .ctaButton {
+            padding: 0.75rem 1.5rem;
+            background: var(--secondaryColor);
+            color: var(--textColor);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+            font-size: 0.95rem;
+        }
 
-#toggleBtn.active .bar:nth-child(2) {
-    opacity: 0;
-}
+        .ctaButton:hover {
+            transform: translateY(-2px);
+            box-shadow:var(--shadowUl);
+        }
 
-#toggleBtn.active .bar:nth-child(3) {
-    transform: translateY(-11px) rotate(-45deg);
-}
-#toggleBtn:hover .bar {
+     /* mobile menu toggle */
+     .mobileMenuToggle {
+        width: 45px;
+        height: 45px;
+        border: none;
+         transition: all var(--transition);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        background: transparent;
+        margin: 0 auto;
+        padding: 10px;
+     }
+     .bar {
+        width: 100%;
+        height: 3px;
+        background-color: var(--textColor);
+        border-radius: 10px;
+     }
+
+     .mobileMenuToggle.active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+     }
+
+     .mobileMenuToggle.active .bar:nth-child(2) {
+        display: none;
+          }
+
+     .mobileMenuToggle.active .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+     }
+.mobileMenuToggle:hover .bar {
     opacity:0.8s;
 }
+
+/* typography */
+ h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.3rem, 8vw, 4rem);
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        h3 {
+            font-size: clamp(1.10rem, 3vw, 1.35rem);
+        }
+
+        p {
+             font-size: clamp(0.90rem, 2vw, 1.1rem);
+        }
+
+        /* general link style */
+          a:link {
+            color: var(--textColor);
+            text-decoration: none;
+        }
+        
+a:visited {
+            color: var(--textColor);
+            text-decoration: none;
+        }
+        
+        a.hover {
+            color: var(--secondaryColor);
+        }
+        a:active {
+            color:  var(--primaryColor);
+        }
+
 /* section */
 section {
-    padding: 4rem 5%;
-    border: 2px solid red;
+     padding: 4rem 5%;
+     margin: 1rem auto;
 }
 section h2 {
     margin-bottom: 3rem;
@@ -156,8 +233,8 @@ section h3 {
 section p {
     margin-bottom: 1rem;
 }
-.container {
-    width: min(90%, 1200px);
+.container, section {
+    width: min(90%, 1400px);
     margin-inline: auto;
     box-sizing: border-box;
 }
@@ -175,10 +252,12 @@ img {
     max-width: 1200px;
     background-repeat: no-repeat;
     background: url(/images/ryanmcguire-laundry-saloon-567951_1920.jpg) center / cover;
-    padding: 0 5%;
+    padding: 150px 5%;
     display: flex;
     align-items: center;
     position: relative;
+    justify-content: center;
+    margin: 0 auto;
 }
 #hero::before {
     content: "";
@@ -195,12 +274,7 @@ img {
      text-align: left;
      padding-left: 20px;
   }
-  .heroContent h1 {
-    font-size: clamp(2.3rem, 5vw, 4.5rem);
-    line-height: 1.1;
-    font-weight: 800;
-    margin-bottom: 1rem;
-  }
+
 
   .heroContent p {
     font-size: 1.2rem;
@@ -208,6 +282,9 @@ img {
     max-width: 550px;
     margin-bottom: 2rem;
     color: rgba(248, 250, 252, 0.9)
+  }
+  span.color {
+    color: var(--secondaryColor)
   }
   .btn {
     display: inline-block;
@@ -268,39 +345,90 @@ box-shadow: 0 8px 20px var(--heroShadow);
     border-radius: 999px;
     margin-bottom: 1.5rem;
 }
-/* media queries */
-/* @media screen and (max-width: 1023px){
-    #hero {
-        background: url(/images/drowdry-dry-cleaning-7951977_640_small.jpg) center / cover;
-    }
-} */
-@media  screen and (min-width: 1024px) {
-    #ulLinks {
-position: unset;
-top: unset;
-right: unset;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-height: auto  !important;
-transform: unset;
- z-index: unset;
-gap: unset;
- background-color: unset;
- box-shadow: unset;
 
+/* services */
+.grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
- nav {
+.gridCard {
+padding: 2rem;
+box-shadow: var(--cardShadow);
+transition: all .3s ease;
+ border-radius: 10px;
+ border: 1px inset var(--backgroundColor);
+ width:100%;
+  -webkit-backdrop-filter: blur(10px);
+backdrop-filter: blur(10px);
+}
+.gridCard:hover {
+    box-shadow: var(--cardShadowHover);
+    transform: translateY(-5px);
+}
+
+
+#services {
+    background: url(/images/laundryroomgirl.jpg) center / cover no-repeat;
+    background-clip: border-box;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-inline: unset;
-    padding-block: unset;
+    max-width: unset;
+    min-height: 100vh;
+    position: relative;
 }
+#services::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(30, 58, 138, 0.65), rgba(17, 24, 39, 0.6));
+     padding: 0;
+     z-index: 0;
+  } 
+ #services #h2 {
+    z-index: 1000;
+  }
+  #services .container {
+color: white;
+  }
+
+
+
+
+
+
+
+
+
+/* media queries */
+
+   @media (max-width: 768px) {
+            .navLinks {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--backgroundColor);
+                border-top: 1px solid rgba(var(--secondaryColor), 0.1);
+                padding: 1rem;
+                min-height: 100vh;
+                transition: transform .2s ease;
+                transform: translateX(-100%);
+            }
+            .navLinks.active {
+                transform: translateX(0);
+            }
+            .navbarContent {
+                padding: 0 1.5rem;
+            }
+        }
+
+@media  screen and (min-width: 1024px) {
+
 
  
-#toggleBtn {
+.mobileMenuToggle {
     display: none;
 }
 .heroContent {

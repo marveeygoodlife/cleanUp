@@ -1,10 +1,8 @@
 "use strict";
-const toggleBtn = document.querySelector("#toggleBtn");
-const ulLinks = document.querySelector("#ulLinks");
+const toggleBtn = document.querySelector(".mobileMenuToggle");
+const ulLinks = document.querySelector(".navLinks");
 
 toggleBtn.addEventListener("click", () => {
-    ulLinks.classList.toggle("active");
     toggleBtn.classList.toggle("active");
-    console.log("clicked")
-});
-  
+    ulLinks.classList.toggle("active");
+})
